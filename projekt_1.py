@@ -90,8 +90,10 @@ if userID in RegisteredUserIDs and password == RegisteredPasswords[RegisteredUse
         f"{cara}\n"
         f"LEN|  OCCURENCES        |NR."
         )
-        for k,v in delkySlov.items():
+        delkySlovSerazene = dict(sorted(delkySlov.items()))
+        for k,v in delkySlovSerazene.items():
             hvezdicky = v*"*"
+
             print(f"{k:>3}|{hvezdicky:>20}|{v}")
     else:
         print("Sorry, your choice was invalid")
