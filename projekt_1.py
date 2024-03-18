@@ -55,8 +55,11 @@ if userID in RegisteredUserIDs and password == RegisteredPasswords[RegisteredUse
         )
     choice = input("Enter a number btw. 1 and 3 to select: ")
     if choice == "1" or choice == "2" or choice == "3":
-        upravenyText = TEXTS[(int(choice)-1)].replace("\n"," ")
+        upravenyText = TEXTS[(int(choice)-1)].replace("\n","").replace(".","").replace(",","")
         vybranyText = upravenyText.split(" ")
+        for slovo in vybranyText:
+            if slovo.isalpha() == False and slovo.isnumeric() == False:
+                vybranyText.remove(slovo)
         pocetSlov = len(vybranyText)
         delkySlov = dict()
         for slovo in vybranyText:
@@ -66,17 +69,17 @@ if userID in RegisteredUserIDs and password == RegisteredPasswords[RegisteredUse
             else:
                 delkySlov[delkaSlova] = 1
         for slovo in vybranyText:
-            if slovo[0].isupper() == True:
+            if slovo[0].isupper():
                 zacatecniVelkePismeno += 1
         for slovo in vybranyText:
-            if slovo.isnumeric() == True:
+            if slovo.isnumeric():
                 pocetCisel += 1
                 soucetCisel += int(slovo)
         for slovo in vybranyText:
-            if slovo.islower() == True:
+            if slovo.islower():
                 slovoMalymi += 1
         for slovo in vybranyText:
-            if slovo.isupper() == True:
+            if slovo.isupper():
                 slovoVelkymi += 1
 
         print (
